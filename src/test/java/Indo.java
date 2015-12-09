@@ -16,14 +16,14 @@ public class Indo {
     @Before
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
     }
 
     @Test
     public void test11() throws Exception {
         String temp = "ИНДО-ЕВРОПЕЕЦ";
         String tempName = "ИНДО-ЕВРОПЕЕЦ | Сайт Алексея Химченко";
-        
+
         boolean t = true;
         driver.get("https://www.google.com.ua/");
         driver.findElement(By.id("lst-ib")).clear();
