@@ -29,12 +29,12 @@ public class Indo {
         driver.findElement(By.id("lst-ib")).clear();
         driver.findElement(By.id("lst-ib")).sendKeys(temp + "\n");
 
-        for (; t; ) {
+        for (int x = 0; t & x < 10; x++) {
             if (isElementPresent(By.linkText(tempName))) {
                 t = false;
+                System.out.println("Нашли на " + x + " странице");
             } else {
                 driver.findElement(By.xpath("//a[@id='pnnext']/span[2]")).click();
-
             }
         }
         driver.findElement(By.linkText(tempName)).click();
