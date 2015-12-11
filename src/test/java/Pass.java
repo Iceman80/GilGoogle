@@ -38,6 +38,7 @@ public class Pass {
         String Url = "http://hotline.ua/computer/noutbuki-netbuki/294407/";
         driver.get(Url);
         String fileText = "";
+        String fileTextNot = "";
         String start = "";
         String midle = "";
         String finish = "";
@@ -68,6 +69,7 @@ public class Pass {
 
                     fin = start + midle + finish;
                     fileText = fileText + fin + "\n" + "\n";
+                    fileTextNot = fileTextNot + tempPrice + "\n";
                 }
 
 
@@ -88,6 +90,10 @@ public class Pass {
 
         Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("price.csv"), "utf-8"));
         writer.write(fileText);
+        writer.close();
+
+        Writer writerN = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("priceNotPars.csv"), "utf-8"));
+        writerN.write(fileTextNot);
         writer.close();
     }
 
