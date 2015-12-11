@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
+
 public class Indo {
     private WebDriver driver;
     private boolean acceptNextAlert = true;
@@ -17,12 +18,13 @@ public class Indo {
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+
     }
 
     @Test
     public void test11() throws Exception {
         String temp = "ИНДО-ЕВРОПЕЕЦ";
-        String tempName = "ИНДО-ЕВРОПЕЕЦ | Сайт Алексея Химченко";
+        String tempName = "Главная — ИНДО-ЕВРОПЕЕЦ";
 
         boolean t = true;
         driver.get("https://www.google.com.ua/");
@@ -40,6 +42,7 @@ public class Indo {
         driver.findElement(By.linkText(tempName)).click();
 
     }
+
 
     @After
     public void tearDown() throws Exception {
