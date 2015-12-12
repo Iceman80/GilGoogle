@@ -34,8 +34,9 @@ public class Pass {
     @Test
     public void test11() throws Exception {
 
-
-        String Url = "http://hotline.ua/computer/noutbuki-netbuki/294407/";
+        String Url = "http://hotline.ua/computer/noutbuki-netbuki/294407-881/"; //Apple
+//        String Url = "http://hotline.ua/computer/noutbuki-netbuki/294408/?sort=0"; //Dell
+//        String Url = "http://hotline.ua/computer/noutbuki-netbuki/294413/?sort=0"; //HP
         driver.get(Url);
         String fileText = "";
         String fileTextNot = "";
@@ -50,12 +51,12 @@ public class Pass {
             if (isElementPresent(By.cssSelector("#catalogue > div.pager > a[title=\"Следующая\"] > img.next"))) {
 
                 for (int i = 0; i < resultsDiv.size(); i++) {
-                    //         System.out.println(i + 1 + ". " + resultsDiv.get(i).getText());
                     String tempPrice = resultsDiv.get(i).getText();
+//                   System.out.println(i + 1 + ". " + tempPrice);
                     String fin = "";
                     Pattern patern = Pattern.compile("\\d{1,4}\\s\\d{1,5}[^\\s(грн)]"); //price
                     Matcher temp1 = patern.matcher(tempPrice);
-                    Pattern paternDouble = Pattern.compile("(АКЦИИ:)\\s\\d{0,4}"); // АКЦИИ
+                    Pattern paternDouble = Pattern.compile("(АКЦИИ:)\\s\\d{0,4}|(В МАГАЗИН)"); // АКЦИИ
                     Matcher temp2 = paternDouble.matcher(tempPrice);
                     Pattern paternEnd = Pattern.compile("(•).+"); //
                     Matcher temp3 = paternEnd.matcher(tempPrice);
@@ -70,6 +71,7 @@ public class Pass {
                     fin = start + midle + finish;
                     fileText = fileText + fin + "\n" + "\n";
                     fileTextNot = fileTextNot + tempPrice + "\n";
+
                 }
 
 
@@ -94,7 +96,7 @@ public class Pass {
 
         Writer writerN = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("priceNotPars.csv"), "utf-8"));
         writerN.write(fileTextNot);
-        writer.close();
+        writerN.close();
     }
 
 
